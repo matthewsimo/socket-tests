@@ -1,0 +1,21 @@
+{
+  "name": "socket-tests",
+  "version": "0.0.0",
+  "description": "Exploration in understanding sockets from multiple sources",
+  "main": " ",
+  "dependencies": {
+    "webserver": "~1.1.2",
+    "socket.io": "~0.9.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": " "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:matthewsimo/socket-tests.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "gitHead": "211628abfce132636da1702a46b86b1a5bca4320"
+}
