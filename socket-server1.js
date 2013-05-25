@@ -1,15 +1,26 @@
+var app = require('http').createServer(handler)
+  , io = require('socket.io').listen(app)
+  , fs = require('fs')
 
-var io = require('socket.io').listen(8080);
+app.listen(8080);
+
+function handler (req, res) {
+  fs.readFile(__dirname + '/client.html',
+  function (err, data) {
+    if (err) {
+      res.writeHead(500);
+      return res.end('Error loading index.html');
+    }
+
+    res.writeHead(200);
+    res.end(data);
+  });
+}
 
 io.sockets.on('connection', function (socket) {
-  io.sockets.emit('this', { will: 'be received by everyone'});
-
-  socket.on('private message', function (from, msg) {
-    console.log('I received a private message by ', from, ' saying ', msg);
-  });
-
-  socket.on('disconnect', function () {
-    io.sockets.emit('user disconnected');
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log('server log: ');
+    console.log(data);
   });
 });
-
